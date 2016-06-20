@@ -35,7 +35,15 @@ if !(288520 in getDLCs 1) then
 	[player, ["<t color='#00FFFF'>Get in as Driver</t>", "client\actions\moveInDriver.sqf", [], 6, true, true, "", "cursorTarget isKindOf 'Kart_01_Base_F' && player distance cursorTarget < 3.4 && isNull driver cursorTarget"]] call fn_addManagedAction;
 };
 
-if (["A3W_savingMethod", "profile"] call getPublicVar == "extDB" && {["A3W_purchasedVehicleSaving"] call isConfigOn || ["A3W_missionVehicleSaving"] call isConfigOn}) then
+/*if (["A3W_savingMethod", "profile"] call getPublicVar == "extDB" && {["A3W_purchasedVehicleSaving"] call isConfigOn || ["A3W_missionVehicleSaving"] call isConfigOn}) then
 {
 	[player, ["<img image='client\icons\save.paa'/> Force Save Vehicle", { pvar_manualVehicleSave = netId cursorTarget; publicVariableServer "pvar_manualVehicleSave" }, [], -9.5, false, true, "", "call canForceSaveVehicle"]] call fn_addManagedAction;
+};*/
+
+if (["A3W_purchasedVehicleSaving"] call isConfigOn) then
+{
+	[player, ["<img image='client\icons\save.paa'/> Save Vehicle", "addons\vsave\vehicleSave.sqf", [], -9.5, false, true, "", "call SaveVehicleCheck"]] call fn_addManagedAction;
+	[player, ["<img image='client\icons\save.paa'/> Re\Save Vehicle", "addons\vsave\vehicleReSave.sqf", [], -9.5, false, true, "", "call ReSaveVehicleCheck"]] call fn_addManagedAction;
+	[player, ["<img image='client\icons\save.paa'/> Save Weapon", "addons\vsave\weaponSave.sqf", [], -9.5, false, true, "", "call SaveWeaponCheck"]] call fn_addManagedAction;
+	[player, ["<img image='client\icons\save.paa'/> Re\Save Weapon", "addons\vsave\weaponReSave.sqf", [], -9.5, false, true, "", "call ReSaveWeaponCheck"]] call fn_addManagedAction;
 };

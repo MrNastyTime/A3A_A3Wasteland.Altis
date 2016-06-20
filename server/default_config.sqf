@@ -54,7 +54,7 @@ A3W_atmMapIcons = 1;               // Draw small icons on the map that indicate 
 A3W_atmRemoveIfDisabled = 1;       // Remove all ATMs from map if A3W_atmEnabled is set to 0 (0 = no, 1 = yes)
 
 // Persistence settings
-A3W_savingMethod = "profile";      // Method used for saving data ("profile", "iniDB", "extDB")
+A3W_savingMethod = "extDB";      // Method used for saving data ("profile", "iniDB", "extDB")
 A3W_playerSaving = 1;              // Save player data like position, health, inventory, etc. (0 = no, 1 = yes)
 A3W_moneySaving = 1;               // If playerSaving = 1, save player money amount (0 = no, 1 = yes)
 A3W_playerStatsGlobal = 0;         // If playerSaving = 1 and savingMethod = "extDB", players' stats on the scoreboard will be their all-time global values from all servers of your database (0 = no, 1 = yes)
@@ -62,10 +62,11 @@ A3W_timeSaving = 1;                // Save and restore in-game clock time betwee
 A3W_weatherSaving = 1;             // Save and restore weather settings between server restarts (0 = no, 1 = yes)
 A3W_combatAbortDelay = 60;         // If playerSaving = 1, delay in seconds for which to disable abort and respawn buttons after firing or being shot (0 = none)
 A3W_purchasedVehicleSaving = 1;    // Save vehicles purchased at vehicle stores between server restarts (0 = no, 1 = yes)
-A3W_missionVehicleSaving = 1;      // Save vehicles captured from missions between server restarts (0 = no, 1 = yes)
+A3W_autosave_vehicles_list = ["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F", "O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F", "I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F", "B_Truck_01_ammo_F", "O_Truck_03_ammo_F", "I_Truck_02_ammo_F", "Wheeled_APC_F", "Tank_F", "O_Heli_Light_02_unarmed_F", "I_Heli_light_03_unarmed_F", "B_Heli_Transport_01_F", "B_Heli_Transport_01_camo_F", "B_Heli_Light_01_armed_F", "O_Heli_Light_02_F", "O_Heli_Light_02_v2_F", "I_Heli_light_03_F", "B_Heli_Attack_01_F", "O_Heli_Attack_02_F", "O_Heli_Attack_02_black_F", "Heli_Transport_04_base_F", "B_Heli_Transport_03_unarmed_F", "B_Heli_Transport_03_F", "I_Heli_Transport_02_F", "I_Plane_Fighter_03_AA_F", "I_Plane_Fighter_03_CAS_F", "B_Plane_CAS_01_F", "O_Plane_CAS_02_F", "VTOL_base_F", "UAV_02_base_F", "UAV_03_base_F", "UGV_01_base_F"]; // List of class names for vehicles that should be automatically locked and saved when bought
+A3W_missionVehicleSaving = 0;      // Save vehicles captured from missions between server restarts (0 = no, 1 = yes)
 A3W_baseSaving = 1;                // Save locked base parts between server restarts (0 = no, 1 = yes)
 A3W_boxSaving = 1;                 // Save locked weapon crates and their contents between server restarts (0 = no, 1 = yes)
-A3W_staticWeaponSaving = 1;        // Save locked static weapons and their magazines between server restarts (0 = no, 1 = yes)
+A3W_staticWeaponSaving = 0;        // Save locked static weapons and their magazines between server restarts (0 = no, 1 = yes)
 A3W_warchestSaving = 1;            // Save warchest objects deployed by players between server restarts (0 = no, 1 = yes)
 A3W_warchestMoneySaving = 1;       // Save warchest team money between server restarts (0 = no, 1 = yes)
 A3W_spawnBeaconSaving = 1;         // Save spawn beacons between server restarts (0 = no, 1 = yes)

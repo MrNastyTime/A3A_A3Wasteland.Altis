@@ -129,7 +129,7 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 
 			_objectID = netId _object;
 			_object setVariable ["A3W_purchasedStoreObject", true];
-			_object setVariable ["ownerUID", getPlayerUID _player, true];
+			//_object setVariable ["ownerUID", getPlayerUID _player, true];
 
 			if (getNumber (configFile >> "CfgVehicles" >> _class >> "isUav") > 0) then
 			{
@@ -178,7 +178,25 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				_object setPosATL [_safePos select 0, _safePos select 1, 0.05];
 				_object setVelocity [0,0,0.01];
 				// _object spawn cleanVehicleWreck;
-				_object setVariable ["A3W_purchasedVehicle", true, true];
+				// _object setVariable ["A3W_purchasedVehicle", true, true];
+
+				if ({_object isKindOf _x} count A3W_autosave_vehicles_list > 0) then {
+					_object setVariable ["A3W_purchasedVehicle", true, true];
+					_object setVariable ["ownerUID", getPlayerUID _player, true];
+					_object setVariable ["ownerN", name _player, true];
+
+					if !({_object isKindOf _x} count ["UAV_02_base_F", "UAV_03_base_F", "UGV_01_base_F"] > 0) then
+					{
+						_object lock 2; // Lock
+						_object setVariable ["objectLocked", true, true];
+						_object setVariable ["R3F_LOG_disabled", true, true];
+					};
+
+					if (_object getVariable ["A3W_purchasedVehicle", false] && !isNil "fn_manualVehicleSave") then
+					{
+						_object call fn_manualVehicleSave;
+					};
+				};
 			};
 
 			_object setDir (if (_object isKindOf "Plane") then { markerDir _marker } else { random 360 });
@@ -234,10 +252,10 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				};
 			};
 
-			if (_object getVariable ["A3W_purchasedVehicle", false] && !isNil "fn_manualVehicleSave") then
+			/*if (_object getVariable ["A3W_purchasedVehicle", false] && !isNil "fn_manualVehicleSave") then
 			{
 				_object call fn_manualVehicleSave;
-			};
+			};*/
 
 			if (_object isKindOf "AllVehicles") then
 			{
