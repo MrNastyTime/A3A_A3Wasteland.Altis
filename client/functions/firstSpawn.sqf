@@ -63,6 +63,7 @@ player addEventHandler ["WeaponAssembled",
 	if (round getNumber (configFile >> "CfgVehicles" >> typeOf _obj >> "isUav") > 0) then
 	{
 		_obj setVariable ["ownerUID", getPlayerUID _player, true];
+		_obj setVariable ["ownerN", name _player, true];
 
 		if (!alive getConnectedUAV player) then
 		{
@@ -145,7 +146,7 @@ player addEventHandler ["InventoryClosed",
 
 player addEventHandler ["HandleDamage", unitHandleDamage];
 
-if (["A3W_remoteBombStoreRadius", 0] call getPublicVar > 0) then
+/*if (["A3W_remoteBombStoreRadius", 0] call getPublicVar > 0) then
 {
 	player addEventHandler ["Fired",
 	{
@@ -173,7 +174,7 @@ if (["A3W_remoteBombStoreRadius", 0] call getPublicVar > 0) then
 			};
 		};
 	}];
-};
+};*/
 
 if (["A3W_combatAbortDelay", 0] call getPublicVar > 0) then
 {
