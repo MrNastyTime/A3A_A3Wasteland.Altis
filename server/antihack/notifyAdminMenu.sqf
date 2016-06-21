@@ -13,7 +13,7 @@ if !([getPlayerUID player, 3] call isAdmin) exitWith {};
 private ["_action", "_value", "_cfg", "_displayStr", "_message"];
 
 _action = param [0, "", [""]];
-_value = param [1, "", [0,"",[],true]];
+_value = param [1, "", [0,"",[]]];
 
 switch (toLower _action) do
 {
